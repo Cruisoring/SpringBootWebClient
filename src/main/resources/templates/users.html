@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>User List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+</head>
+<body>
+    <h2>User List</h2>
+    <div class="container">
+        <div th:if="${not #lists.isEmpty(users)}">
+            <table class="highlight">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user: ${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.userName}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td><a th:href="${'/users/' + user.id}">Details</a></td>
+                    <td><a th:href="${'/users/delete/' + user.id}" class="btn btn-danger">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br/>
+        <a th:href="${'/users/create'}" class="btn btn-success">Create New User</a>
+    </div>
+</body>
+</html>

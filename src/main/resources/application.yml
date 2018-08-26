@@ -1,0 +1,9 @@
+server:
+  port: 8088
+
+rest:
+  base: http://localhost:8080/users
+
+spring:
+  thymeleaf:
+    cache: false
